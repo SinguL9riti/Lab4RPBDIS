@@ -1,0 +1,28 @@
+﻿@model Lab4RPBDIS.ViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "Расписание";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Код расписания</th>
+            <th>День Недели</th>
+            <th>Время прибытия</th>
+            <th>Год</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var schedule in Model.Schedules)
+        {
+            <tr>
+                <td>@schedule.ScheduleId</td>
+                <td>@schedule.Weekday</td>
+                <td>@schedule.ArrivalTime</td>
+                <td>@schedule.Year</td>
+            </tr>
+        }
+    </tbody>
+</table>

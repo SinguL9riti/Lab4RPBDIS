@@ -1,0 +1,32 @@
+﻿@model Lab4RPBDIS.ViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "Список маршрутов";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Код маршрута</th>
+            <th>Маршрут</th>
+            <th>Тип транспорта</th>
+            <th>Продолжительность</th>
+            <th>Дистанция</th>
+            <th>Экспресс</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var route in Model.Routes)
+        {
+            <tr>
+                <td>@route.RouteId</td>
+                <td>@route.Name</td>
+                <td>@route.TransportType</td>
+                <td>@route.PlannedTravelTime</td>
+                <td>@route.Distance</td>
+                <td>@route.IsExpress</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,28 @@
+﻿@model Lab4RPBDIS.ViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "Список персонала";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Код Работника</th>
+            <th>День</th>
+            <th>Смена</th>
+            <th>Работники</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var personnel in Model.Personnels)
+        {
+            <tr>
+                <td>@personnel.PersonnelId</td>
+                <td>@personnel.Date</td>
+                <td>@personnel.Shift</td>
+                <td>@personnel.EmployeeList</td>
+            </tr>
+        }
+    </tbody>
+</table>
