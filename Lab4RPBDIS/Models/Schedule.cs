@@ -8,13 +8,14 @@ namespace Lab4RPBDIS.Models
         public int ScheduleId { get; set; }
 
         [Display(Name = "Код маршрута")]
+        [Required]
         public int RouteId { get; set; }
 
         [Display(Name = "День Недели")]
         public string Weekday { get; set; } = null!;
 
         [Display(Name = "Время прибытия")]
-        public TimeOnly ArrivalTime { get; set; }
+        public TimeSpan ArrivalTime { get; set; }
 
         [Display(Name = "Год")]
         public int Year { get; set; }

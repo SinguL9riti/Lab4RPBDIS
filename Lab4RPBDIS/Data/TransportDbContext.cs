@@ -5,16 +5,8 @@ using Route = Lab4RPBDIS.Models.Route;
 
 namespace Lab4RPBDIS.Data
 {
-    public partial class TransportDbContext : DbContext
+    public class TransportDbContext(DbContextOptions<TransportDbContext> options) : IdentityDbContext<ApplicationUser>(options)
     {
-        public TransportDbContext()
-        {
-        }
-
-        public TransportDbContext(DbContextOptions<TransportDbContext> options)
-            : base(options)
-        {
-        }
 
         public virtual DbSet<Personnel> Personnels { get; set; }
 

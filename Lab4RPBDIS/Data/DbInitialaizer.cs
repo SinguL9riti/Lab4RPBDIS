@@ -49,7 +49,7 @@ namespace Lab4RPBDIS.Data
                 {
                     RouteId = rand.Next(1, numberOfRoutes + 1),
                     Weekday = daysOfWeek[rand.Next(daysOfWeek.Length)],
-                    ArrivalTime = TimeOnly.FromTimeSpan(TimeSpan.FromMinutes(rand.Next(1440))),
+                    ArrivalTime = TimeSpan.FromMinutes(rand.Next(1440)),
                     Year = DateTime.Now.Year - rand.Next(2)
                 });
             }

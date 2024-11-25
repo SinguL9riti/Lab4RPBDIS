@@ -24,11 +24,13 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
+                <partial name="_LoginPartial" />
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Routes" asp-action="Index">Список маршрутов</a></li>
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Personnels" asp-action="Index">Список персонала</a></li>
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Schedules" asp-action="Index">Расписание</a></li>
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Stops" asp-action="Index">Список Остановок</a></li>
+                    
                 </ul>
             </div>
         </div>

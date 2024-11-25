@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Lab4RPBDIS.Middleware;
+using Lab4RPBDIS.Models;
 
 namespace Lab4RPBDIS
 {
@@ -19,8 +20,9 @@ namespace Lab4RPBDIS
                 services.AddDbContext<TransportDbContext>(options => options.UseSqlServer(connectionString));
                 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-                builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<TransportDbContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores<TransportDbContext>()
+                .AddDefaultTokenProviders();
 
             // Добавление кэширования
             services.AddMemoryCache();
@@ -30,16 +32,16 @@ namespace Lab4RPBDIS
                     options.CacheProfiles.Add("Default",
                         new CacheProfile()
                         {
-                            Duration = 2 * 16 + 240
+                            Duration = 2 * 28 + 240
                         });
                 });
                 // Добавление поддержки сессии
                 services.AddDistributedMemoryCache();
                 services.AddSession();
-
+                services.AddRazorPages();
                 // Регистрация сервисов
                 services.AddTransient<IViewModelService, HomeModelService>();
-
+                
                 // Использование MVC
                 services.AddControllersWithViews();
 
@@ -72,11 +74,11 @@ namespace Lab4RPBDIS
                 app.UseAuthorization();
 
                 app.UseResponseCaching(); // Включение ResponseCaching Middleware
-
                 // Устанавливаем сопоставление маршрутов с контроллерами
                 app.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                app.MapRazorPages();
 
                 app.Run();
             }
